@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <style>
+        body {
+            background: {{ fav_color }};
+        }
+    </style>
+</head>
+<body>
+    <form action="/process-form" method="POST">
+        <div>
+            {% csrf_token %}
+            <label for="">Favorite Color</label>
+            <select name="color">
+                <option value="blue">blue</option>
+                <option value="brown">brown</option>
+                <option value="red">red</option>
+                <option value="cyan">cyan</option>
+                <option value="pink">pink</option>
+                <option value="turquoise">turquoise</option>
+            </select>
+        </div>
+        <button>Submit</button>
+    </form>
+
+    {% for activity in activities %}
+        <p>You clicked {{ activity.color }} at {{ activity.time }}.</p>
+    {% endfor %}
+</body>
+</html>
